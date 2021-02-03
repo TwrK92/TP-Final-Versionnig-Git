@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+#On definit le mot rechercher : Ref
+refRegex = /Ref/
+refFound = true #La variable si on trouve Ref dans le message du commit est mise sur True
+
+#Pour chaques arguments du script ruby on teste si la string Ref est dedans
+ARGV.each do|a|
+	puts a
+	if not refRegex.match(a)
+		refFound = false #Si ref n'est pas dedans on met refFound a false
+		puts "La string est pas la"
+	end 
+end
+
+if not refFound
+	puts "Ref n'est pas dans le message du commit"
+	exit 1 #Si refFound n'est pas True on dit qu'il n'y a pas Ref dans le message et on annule le commit
+end
